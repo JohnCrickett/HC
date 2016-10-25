@@ -21,5 +21,8 @@ To calculate the shortest route between two locations:
 
 
 ## Examples:
-To run the examples (on Windows) a batch file is provided  
+To run the examples (on Windows) a batch file is provided:  
 `hc_examples.bat`
+
+To run the examples (on Linux) a batch file is provided:  
+`hc_examples.sh`
