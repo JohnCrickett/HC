@@ -46,19 +46,27 @@ class TestRouteCalculator(unittest.TestCase):
         self.assertEqual(cost, 8)
 
 
-    def test_get_all_routes(self):
+    def test_all_routes_within_timelimit(self):
         with self.assertRaises(JourneyError):
-            self._route_calc.get_all_routes('New York', 'MadeUp Town')
+            self._route_calc.all_routes_within_timelimit('New York', 'MadeUp Town')
 
         with self.assertRaises(JourneyError):
-            self._route_calc.get_all_routes('New York', 'New York')
+            self._route_calc.all_routes_within_timelimit('New York', 'New York')
 
-        shortest_paths = self._route_calc.get_all_routes('Buenos Aires', 'Liverpool')
+        shortest_paths = self._route_calc.all_routes_within_timelimit('Buenos Aires', 'Liverpool')
         self.assertEqual(len(shortest_paths), 2)
         cost = self._route_calc.calculate_journey_time(shortest_paths[0])
         self.assertEqual(cost, 8)
         cost = self._route_calc.calculate_journey_time(shortest_paths[1])
         self.assertEqual(cost, 8)
+
+
+    def test_all_routes_within_hoplimit(self):
+        with self.assertRaises(JourneyError):
+            self._route_calc.all_routes_within_hoplimit('New York', 'MadeUp Town')
+
+        with self.assertRaises(JourneyError):
+            self._route_calc.all_routes_within_hoplimit('New York', 'New York')
 
 
 if __name__ == '__main__':

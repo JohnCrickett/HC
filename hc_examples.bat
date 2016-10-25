@@ -20,3 +20,16 @@ python router.py --network ./data/network.txt --shortesttime "Buenos Aires" "Liv
 
 @echo Route from "New York" to "New York"
 python router.py --network ./data/network.txt --shortesttime "New York" "New York"
+
+@echo . & echo Finding the number of routes within a stop limit
+@echo ------------------------------------------------
+@echo Routes from Liverpool to Liverpool with a maximum number of 3 stops
+python router.py --network ./data/network.txt --hoplimit Liverpool Liverpool
+
+@echo Routes from Buenos Aires to Liverpool where exactly 4 stops are made
+python router.py --network ./data/network.txt --hoplimit "Buenos Aires" Liverpool
+
+@echo . & echo Finding the number of routes within a time limit
+@echo ------------------------------------------------
+@echo Routes from Liverpool to Liverpool where the journey time is less than or equal to 25 days
+python router.py --network ./data/network.txt --timelimit Liverpool Liverpool 25

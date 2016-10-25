@@ -19,8 +19,13 @@ def main():
                         nargs="+",
                         help='the journey to calculate / cost',
                         )
-    parser.add_argument('--limit',
-                        help='the journey cost limit',
+    parser.add_argument('--hoplimit',
+                        nargs="+",
+                        help='the journey hop limit',
+                        )
+    parser.add_argument('--timelimit',
+                        nargs="+",
+                        help='the journey time limit',
                         )
     args = parser.parse_args()
 
@@ -52,8 +57,13 @@ def main():
             print(e)
 
 
+    # get all routes from src to dest that are within hoplimit
+    if args.hoplimit != None:
+        rc = RouteCalculator(network)
+        # TODO
+
     # get all routes from src to dest that are within limit
-    if args.limit != None:
+    if args.timelimit != None:
         rc = RouteCalculator(network)
         # TODO
 

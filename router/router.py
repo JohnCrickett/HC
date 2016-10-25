@@ -98,11 +98,25 @@ class RouteCalculator(object):
         return path[::-1] # reverse the path
 
 
-    def get_all_routes(self, src, dest, cost_limit):
-        """Get all the routes between a src/dest pair of nodes that cost less than or equal to the limit
+    def all_routes_within_timelimit(self, src, dest, cost_limit):
+        """Get all the routes between a src/dest pair of nodes that hop count is less than or
+           equal to the hop limit
+
+        src -- the start node
+        dest -- the target (destination) node
+        limit -- the maximum number of hops on the route
+        """
+        # TODO DFS with depth limited to limit
+        return None
+
+
+    def all_routes_within_hoplimit(self, src, dest, cost_limit):
+        """Get all the routes between a src/dest pair of nodes that cost less than or
+           equal to the limit
 
         src -- the start node
         dest -- the target (destination) node
         limit -- the maximum cost of the route
         """
+        # TODO DFS with path limited to cost
         return None
