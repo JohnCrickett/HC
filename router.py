@@ -19,6 +19,9 @@ def main():
                         nargs="+",
                         help='the journey to calculate / cost',
                         )
+    parser.add_argument('--limit',
+                        help='the journey cost limit',
+                        )
     args = parser.parse_args()
 
     # the network is required so we can assume we have filename here
