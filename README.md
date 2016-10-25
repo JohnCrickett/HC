@@ -18,3 +18,8 @@ To calculate the travel time of a journey:
 
 To calculate the shortest route between two locations:  
 `python router.py --network ./data/network.txt --shortesttime "New York" "Casablanca"`
+
+
+## Examples:
+To run the examples (on Windows) a batch file is provided  
+`hc_examples.bat`
