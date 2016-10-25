@@ -16,5 +16,5 @@ For help
 To calculate the travel time of a journey
 `python router.py --network ./data/network.txt --journeytime "New York" "Liverpool"`
 
-To calculate the shortest route between two locations
+To calculate the shortest route between two locations  
 `python router.py --network ./data/network.txt --shortesttime "New York" "Casablanca"`
