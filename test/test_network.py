@@ -10,7 +10,7 @@ class TestNetwork(unittest.TestCase):
 
 
     def test_load(self):
-        network = load_network('./data/network.txt')
+        network = load_network('./data/network.txt') # TODO mock this
         self.assertEqual(network.size(), 9)
         reachable_from_Buenos_Aires = network.reachable_from("Buenos Aires")
         self.assertCountEqual(reachable_from_Buenos_Aires,

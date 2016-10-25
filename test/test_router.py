@@ -8,7 +8,7 @@ from router.router import RouteCalculator, JourneyError
 
 class TestRouteCalculator(unittest.TestCase):
     def setUp(self):
-        network = load_network('./data/network.txt')
+        network = load_network('./data/network.txt') # TODO mock this!
         self._route_calc = RouteCalculator(network)
 
 

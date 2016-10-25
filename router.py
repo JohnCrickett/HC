@@ -1,6 +1,6 @@
 import argparse
 
-from router.router import RouteCalculator
+from router.router import RouteCalculator, JourneyError
 from router.network import Network, load_network
 
 
@@ -31,17 +31,25 @@ def main():
     # now lets see what the user wants to do with the netwoek
     # determine a journey time for a specified route
     if args.journeytime != None:
-        rc = RouteCalculator(network)
-        time = rc.calculate_journey_time(args.journeytime)
-        print("Journey time is: %d" % time)
+        try:
+            rc = RouteCalculator(network)
+            time = rc.calculate_journey_time(args.journeytime)
+            print("Journey time is: %d" % time)
+        except JourneyError as e:
+            print(e)
+
+
 
     # calculate the shortest route for a specified src/dest pair
     if args.shortesttime != None:
-        rc = RouteCalculator(network)
-        route = rc.calculate_shortest_path(args.shortesttime[0], args.shortesttime[1])
-        time = rc.calculate_journey_time(route)
-        print("Journey time is: %d" % time)
-        print("Route is: " + ', '.join(route))
+        try:
+            rc = RouteCalculator(network)
+            route = rc.calculate_shortest_path(args.shortesttime[0], args.shortesttime[1])
+            time = rc.calculate_journey_time(route)
+            print("Journey time is: %d" % time)
+            print("Route is: " + ', '.join(route))
+        except JourneyError as e:
+            print(e)
 
 
     # get all routes from src to dest that are within limit

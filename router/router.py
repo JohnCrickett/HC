@@ -38,7 +38,7 @@ class RouteCalculator(object):
         route -- the list of the nodes along the route in order of traversal
         """
         if not self.validate_journey(route):
-            raise JourneyError("Error: unable to calculate cost for invalid journey")
+            raise JourneyError("Error: unable to calculate cost for an invalid journey")
 
         cost = 0
         for i in range(len(route) - 1):
