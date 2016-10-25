@@ -12,6 +12,13 @@ class NetworkError(Exception):
 
 
 class Link(object):
+    """Simple POD type for a Link in a Network (Graph)
+
+    Attributes:
+        src -- the a end (start) of the link
+        dest -- the z end (end) of a link
+        cost -- the cost of traversing the link
+    """
     def __init__(self, src, dest, cost):
         self.src = src
         self.dest = dest
@@ -19,6 +26,9 @@ class Link(object):
 
 
 class Network(object):
+    """A representation of a network (Graph)
+
+    """
     def __init__(self):
         self._links = []
         self._nodes = []
@@ -41,6 +51,11 @@ class Network(object):
 
 
     def reachable_from(self, src):
+        """
+        Determine which nodes are reachable from this node and return a list of reachable nodes
+
+        src -- the source node to check reachabilty from
+        """
         reachable_from = []
         for link in self._links:
             if link.src == src:
@@ -49,25 +64,41 @@ class Network(object):
 
 
     def size(self):
+        """ Returns the number of links in the network"""
         return len(self._links)
 
 
     def link_cost(self, src, dest):
+        """
+        Returns the cost of traversing the link from src to desk
+
+        raises NetworkError if the src or dest are not found in the network
+        """
         for link in self._links:
             if link.src == src and link.dest == dest:
                 return link.cost
+        raise NetworkError("Error: src or dest not found in network")
 
 
     def nodes(self):
+        """Returns the list of nodes in the network"""
         return self._nodes
 
 
     def links(self):
+        """Returns the list of links in the network"""
         return self._links
 
 
 
 def load_network(filename):
+    """
+    Loads a network from a CSV formatted file
+
+    filename -- the name of the file to load the network from
+
+    returns a net Network object built using the file contents
+    """
     with open(filename) as file:
         data = file.readlines()
 

@@ -15,12 +15,17 @@ class JourneyError(Exception):
 
 
 class RouteCalculator(object):
+    """Route calculation class"""
+
     def __init__(self, network):
         self._network = network
 
 
     def validate_journey(self, route):
+        """ Validates a journey to ensure it travels along valid links (both existence and direction)
 
+        route -- a list of the nodes along the route in order of traversal
+        """
         for i in range(len(route) - 1):
             if route[i + 1] not in self._network.reachable_from(route[i]):
                 return False
@@ -28,6 +33,10 @@ class RouteCalculator(object):
 
 
     def calculate_journey_time(self, route):
+        """ Calculates the time it will take to travel the specified route (journey)
+
+        route -- the list of the nodes along the route in order of traversal
+        """
         if not self.validate_journey(route):
             raise JourneyError("Error: unable to calculate cost for invalid journey")
 
@@ -39,6 +48,11 @@ class RouteCalculator(object):
 
 
     def calculate_shortest_path(self, src, dest):
+        """Calculates the shortest path between a src/dest pair of nodes
+
+        src -- the node to start from
+        dest -- the target (destination) node
+        """
         dist = 0
         current_node = src
         big = 99999999
@@ -85,4 +99,10 @@ class RouteCalculator(object):
 
 
     def get_all_routes(self, src, dest, cost_limit):
+        """Get all the routes between a src/dest pair of nodes that cost less than or equal to the limit
+
+        src -- the start node
+        dest -- the target (destination) node
+        limit -- the maximum cost of the route
+        """
         return None
