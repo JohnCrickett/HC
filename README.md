@@ -1,5 +1,7 @@
 # HC
-Loads a network from a CSV file and performs various operations on it
+Loads a network from a CSV file and performs various operations on it.
+
+Developed and tested using Python 3.5.2 
 
 ##Testing:
 to run all unit tests use:  
