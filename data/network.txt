@@ -1,0 +1,9 @@
+Buenos Aires, New York, 6
+Buenos Aires, Casablanca, 5
+Buenos Aires, Cape Town, 4
+New York, Liverpool, 4
+Liverpool, Casablanca, 3
+Liverpool, Cape Town, 6
+Casablanca, Liverpool, 3
+Casablanca, Cape Town, 6
+Cape Town, New York, 8
